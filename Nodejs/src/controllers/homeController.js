@@ -5,12 +5,11 @@ let getHomePage = async (req, res) => {
     //lưu ý views có child folder thì phải thêm "/"
     try {
         let data = await db.User.findAll();
-        
-        console.log("-----------------")
-        console.log(data);
-        console.log("-----------------")
 
-        return res.render("homepage.ejs");
+        return res.render("homepage.ejs", {
+            //chuyển file json sang string
+            data: JSON.stringify(data)
+        });
     } catch (e) {
         console.log(e)
     }
